@@ -1,5 +1,6 @@
 # A quiz-bot
-# Works with groups of up to 200 people, > than that and group can be converted to supergroup and additional code is needed (chat_ID changes).
+# Works with groups of up to 200 people, > than that and group converts to a supergroup with a new chat_id, so additional code is needed (chat_ID changes).
+# Just /reset it if that would be the case
 
 import constants as keys
 
