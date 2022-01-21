@@ -41,11 +41,7 @@ def signup(conn, actual_name: str, user_id: int, chat_id: int, nickname: str, an
 
     c = conn.cursor()
     c.execute('SELECT actual_name, user_id, nickname FROM user_data WHERE actual_name=? OR user_id=? OR nickname=?', (actual_name, user_id, nickname))
-    result = c.fetchone()
-
-    if result: pass
-
-    else:
+    if not (result := c.fetchone()):
         c.execute('INSERT INTO user_data (actual_name, user_id, chat_id, nickname, answer, rating, score) VALUES (?, ?, ?, ?, ?, ?, ?)', (actual_name, user_id, chat_id, nickname, answer, rating, score))
         conn.commit()
 
@@ -113,9 +109,7 @@ def total_score(conn):
     
     c = conn.cursor()
     c.execute('SELECT GROUP_CONCAT(nickname), score FROM (SELECT score, nickname FROM user_data ORDER BY score, nickname) GROUP BY score;')
-    result = c.fetchall()
-
-    return result
+    return c.fetchall()
 
 
 @ensure_connection
