@@ -126,11 +126,10 @@ def user_nickname(update, context):
         score=0) == 'OK':
 
         update.message.reply_text(f"Спасибо, {nickname}, удачи вам!")
-        return ConversationHandler.END
-    
     else:
         update.message.reply_text("Пользователь с таким идентификатором или никнеймом уже зарегистрировался")
-        return ConversationHandler.END
+
+    return ConversationHandler.END
 
 def invalid_input(update, context):
     update.message.reply_text("Неправильный ввод, попробуйте еще раз, пожалуйста")
@@ -162,9 +161,7 @@ def admquestion(update,context):
     return ConversationHandler.END
 
 def answers(update, context):
-    if current_phase == 0: pass
-
-    else:
+    if current_phase != 0:
         msg = str(update.message.text)
 
         if msg.startswith("#answer"):
@@ -178,8 +175,6 @@ def answers(update, context):
                 context.bot.send_message(chat_id=admin_id, text=get_nick+' '+msg, reply_markup=get_base_inline_keyboard())
 
             else: update.message.reply_text("Извините, но вы уже дали свой ответ")
-
-        else: pass
 
 def admendround_command(update, context):
     '''Announce rating of everyone who scored 1 or 2 points this turn'''
