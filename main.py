@@ -1,6 +1,4 @@
-# A quiz-bot
-# Works with groups of up to 200 people, > than that and group converts to a supergroup with a new chat_id, so additional code is needed (chat_ID changes).
-# Just /reset it if that would be the case
+
 
 import constants as keys
 
@@ -22,7 +20,7 @@ from telethon.ext import (
     ConversationHandler,
 )
 
-# Чтобы точно знать, подключился ли бот к Телеграму или нет
+# To know exactly if the bot has connected to Telegram or not
 from telethon.utils.request import Request
 
 from db import (
@@ -44,7 +42,7 @@ set_nickname = range(3)
 current_phase = 0
 question_state = range(2)
 
-# Идентификаторы кнопок
+# Button IDs
 CALLBACK_BUTTON1_LEFT = 'callback_button1_left'
 CALLBACK_BUTTON2_CENTRE = 'callback_button2_centre'
 CALLBACK_BUTTON3_RIGHT = 'callback_button3_right'
@@ -72,7 +70,7 @@ def get_base_inline_keyboard():
     return InlineKeyboardMarkup(keyboard)
 
 def keyboard_callback_handler(update, context, chat_data=None, **kwargs):
-    # Обработчик ВСЕХ кнопок со ВСЕХ клавиатур
+   # Handler for ALL buttons from ALL keyboards
     query = update.callback_query
     data = query.data
 
@@ -212,7 +210,7 @@ def admreset_command(update, context):
 
         delete_score()
         context.bot.send_message(chat_id=update.effective_chat.id, text="All data has been deleted!")
-        init_db() #Запускаем новую пустую таблицу
+        init_db() #Start a new empty table
     
     else:
         context.bot.send_message(chat_id=update.effective_chat.id, text="This command is for administrators only")
@@ -237,11 +235,11 @@ def main():
 
     updater = Updater(bot=bot, use_context=True)
 
-    # Проверка, подключились или нет
+    # Check if connected or not
     info = bot.get_me()
     logger.info(f'Bot info: {info}')
 
-    # Подключаем бд
+   # Connect database
     init_db()
 
     dp = updater.dispatcher
