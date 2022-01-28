@@ -59,8 +59,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-# Каждый список внутри "keyboard" - это один горизонтальный ряд кнопок
-# Каждый элемент внутри списка - это один вертикальный столбец, сколько кнопок - столько столбцов
+# Each list inside "keyboard" is one horizontal row of buttons
+# Each item inside the list is one vertical column, as many buttons as there are columns
 def get_base_inline_keyboard():
     keyboard = [        
         [
@@ -81,15 +81,15 @@ def keyboard_callback_handler(update, context, chat_data=None, **kwargs):
     nickname = re.findall("(^.+)\s#", current_text, re.DOTALL)[0]
 
     if data == CALLBACK_BUTTON1_LEFT:
-        query.edit_message_text(text=(current_text + "\t#оценка: 0 баллов"))
+        query.edit_message_text(text=(current_text + "\t#rating: 0 points"))
         rating = 0
         
     elif data == CALLBACK_BUTTON2_CENTRE:
-        query.edit_message_text(text=(current_text + "\t#оценка: 1 балл"))
+        query.edit_message_text(text=(current_text + "\t#rating: 1 point"))
         rating = 1
 
     elif data == CALLBACK_BUTTON3_RIGHT:
-        query.edit_message_text(text=(current_text + "\t#оценка: 2 балла"))
+        query.edit_message_text(text=(current_text + "\t#rating: 2 points"))
         rating = 2
 
     write_score(nickname=nickname.strip(), rating=rating)
@@ -97,12 +97,12 @@ def keyboard_callback_handler(update, context, chat_data=None, **kwargs):
 def start_command(update, context):
     '''Allows users to participate in quiz. They enter their names when asked'''
     if current_phase == 0:
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Здравствуйте! Как вас зовут?")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Hello! What is your name?")
 
         return set_nickname
     
     else:
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Регистрация пока закрыта, пожалуйста, дождитесь окончания текущего раунда")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Registration is closed for now, please wait until the end of the current round")
 
 # chat_id is negative if chat is a group, positive if it's a single person "chat"(and equals to user_id in that case)
 
@@ -125,26 +125,26 @@ def user_nickname(update, context):
         rating=0,
         score=0) == 'OK':
 
-        update.message.reply_text(f"Спасибо, {nickname}, удачи вам!")
+        update.message.reply_text(f"Thanks {nickname}, good luck!")
         return ConversationHandler.END
     
     else:
-        update.message.reply_text("Пользователь с таким идентификатором или никнеймом уже зарегистрировался")
+        update.message.reply_text("A user with the same ID or nickname has already registered")
         return ConversationHandler.END
 
 def invalid_input(update, context):
-    update.message.reply_text("Неправильный ввод, попробуйте еще раз, пожалуйста")
+    update.message.reply_text("Invalid input, please try again")
 
 
 def admquestion_command(update, context):
     if update.message.from_user.id == admin_id:
 
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Какой зададим вопрос?")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="What question shall we ask?")
 
         return question_state
     
     else:
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Эта команда только для администраторов")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="This command is for administrators only")
 
 
 def admquestion(update,context):
@@ -157,7 +157,7 @@ def admquestion(update,context):
 
             context.bot.pin_chat_message(chat_id=i, message_id=update.message.message_id, disable_notification=None, timeout=None)
 
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Я разослал вопрос всем участникам, хорошего вам дня")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="I sent the question to all participants, have a nice day")
     current_phase = 1
     return ConversationHandler.END
 
@@ -173,11 +173,11 @@ def answers(update, context):
 
             if did_they_answer(user_id=user_id) == 0:
 
-                update.message.reply_text("Ответ принят, спасибо!")
+                update.message.reply_text("Answer accepted, thanks!")
                 get_nick = write_answers(user_id=user_id)
                 context.bot.send_message(chat_id=admin_id, text=get_nick+' '+msg, reply_markup=get_base_inline_keyboard())
 
-            else: update.message.reply_text("Извините, но вы уже дали свой ответ")
+            else: update.message.reply_text("I'm sorry, but you already gave your answer.")
 
         else: pass
 
@@ -190,8 +190,8 @@ def admendround_command(update, context):
     print(results)
 
     for i in postman:
-        context.bot.send_message(chat_id=i, text=f'Набравшие 2 балла за этот раунд: {results[0]}')
-        context.bot.send_message(chat_id=i, text=f'А вот те, кто набрал 1 балл за этот раунд: {results[1]}')
+        context.bot.send_message(chat_id=i, text=f'Scored 2 points this round: {results[0]}')
+        context.bot.send_message(chat_id=i, text=f'But those who scored 1 point for this round: {results[1]}')
 
     current_phase = 0
 
@@ -211,11 +211,11 @@ def admreset_command(update, context):
     if update.message.from_user.id == admin_id:
 
         delete_score()
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Все данные удалены!")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="All data has been deleted!")
         init_db() #Запускаем новую пустую таблицу
     
     else:
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Эта команда только для администраторов")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="This command is for administrators only")
     
 
 def main():
