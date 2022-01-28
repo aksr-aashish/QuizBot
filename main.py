@@ -7,13 +7,13 @@ import constants as keys
 import re
 import logging
 
-from telegram import (
+from telethon import (
     Bot,
     InlineKeyboardButton,
     InlineKeyboardMarkup
 )
 
-from telegram.ext import (
+from telethon.ext import (
     Updater, 
     CommandHandler, 
     MessageHandler,
@@ -23,7 +23,7 @@ from telegram.ext import (
 )
 
 # Чтобы точно знать, подключился ли бот к Телеграму или нет
-from telegram.utils.request import Request
+from telethon.utils.request import Request
 
 from db import (
     init_db,
