@@ -11,3 +11,7 @@ Messages with the answer are sent to the personal administrator, where he / she 
 On the /round command (available only to admins), the bot writes to all the unique chat_id nicknames of the participants in the game and who earned how many points per round. These scores are added to the participant's total all-time scores (everyone can see the statistics for the /score team). Registration is open again.
 On the admin command /reset, all data is deleted (participant nicknames, points, etc.).
 The bot is written using the python-telegram-bot library, the database is sqlite3
+
+
+### 💙 Heroku 💙
+<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/aksr-aashish/QuizBot.git"><img src="https://telegra.ph/file/4a7d5037bcdd1e74a517a.jpg" width="50"></a></p>
