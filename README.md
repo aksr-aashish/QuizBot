@@ -14,4 +14,4 @@ The bot is written using the python-telegram-bot library, the database is sqlite
 
 
 ### 💙 Heroku 💙
-<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/aksr-aashish/QuizBot.git"><img src="https://telegra.ph/file/4a7d5037bcdd1e74a517a.jpg" width="50"></a></p>
+<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/aksr-aashish/QuizBot"><img src="https://telegra.ph/file/4a7d5037bcdd1e74a517a.jpg" width="50"></a></p>
