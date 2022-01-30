@@ -2,18 +2,26 @@
    "name": "QuizBot",
    "description": "hmm no time",
    "repository": "https://github.com/aksr-aashish/QuizBot ",
+   "addons": [
+      {
+         "options": {
+            "version": "12"
+         },
+         "plan": "heroku-postgresql"
+      }
+   ],
    "buildpacks": [
     {
       "url": "heroku/python"
     }     
   ],      
    "env": {
-      "API_ID_KEY": {
+      "API_TOKEN": {
          "description": "id",
          "value": ""
       },
-      "API_HASH_KEY": {
-         "description": "app hash.",
+      "ADMIN_ID": {
+         "description": "admin ID Here.",
          "value": ""
       }
    }
