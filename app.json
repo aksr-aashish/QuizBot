@@ -9,7 +9,7 @@
         "VexanaFanClub"
     ],
     "repository": "https://github.com/aksr-aashish/QuizBot"
-    "env": {
+   } "env": {
         "API_TOKEN": {
             "description": "Bot token, get it from @BotFather.",
             "value": ""
@@ -24,4 +24,4 @@
             "url": "heroku/python"
         }
     ]
-}
+
