@@ -15,9 +15,7 @@
       "API_HASH_KEY": {
          "description": "app hash.",
          "value": ""
-      },
-
-
+      }
    }
 }
 
