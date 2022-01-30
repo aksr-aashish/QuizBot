@@ -1,43 +1,67 @@
 {
-      "name": "Vexana Robot",
-      "description": "A Powerful  Telegram group management bot with anime theme.",
-      "keywords": [
-         "telegram",
-         "advance",
-         "group",
-         "manager",
-         "Vexanarobot"
-      ],
-    
-   "logo":    "https://telegra.ph/file/4a7d5037bcdd1e74a517a.jpg",
-   "repository": "https://github.com/aksr-aashish/QuizBot",
-   "addons": [
-          {
-         "options": {
-            "version": "12"
-         },
-         "plan": "heroku-postgresql"
-      }
-   ],
+   "name": "QuizBot",
+   "description": "hmm no time",
+   "repository": "https://github.com/aksr-aashish/QuizBot ",
    "buildpacks": [
     {
-      "url": "https://github.com/heroku/heroku-buildpack-python"
-    },
-    {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    }
-  ],  
+      "url": "heroku/python"
+    }     
+  ],      
    "env": {
-      "API_TOKEN": {
-         "description": "Your bot token. Get one from @BotFather duh",
-         "required": true,
+      "API_ID_KEY": {
+         "description": "id",
          "value": ""
       },
-      "ADMIN_ID": {
-         "description": "Get API_ID from my.telegram.org, used for telethon based modules.",
-         "required": true,
+      "API_HASH_KEY": {
+         "description": "app hash.",
          "value": ""
       },
-      
+      "STRING_SESSION": {
+         "description": "session ",
+         "value": ""
+      },    
+      "HEROKU_API_KEY": {
+         "description": "get from heroku settings.",
+         "value": ""
+      },      
+      "SIBYL": {
+         "description": "readme.",
+         "value": ""
+      },
+      "INSPECTORS": {
+         "description": "see readme",
+         "value": ""
+      },
+      "ENFORCERS": {
+         "description": "readme plz",
+         "value": ""
+      },
+      "MONGO_DB_URL": {
+         "description": "mongodb.com go get it.. see channel infotel autofilter bot tute",
+         "value": ""
+      },
+      "Sibyl_logs": {
+         "description": "radme.",
+         "value": ""
+      },      
+      "Sibyl_Approved_Logs": {
+         "description": "readme",
+         "value": ""
+      },
+      "GBAN_MSG_LOGS": {
+         "description": "readme",
+         "value": ""
+      },
+      "BOT_TOKEN": {
+         "description": "get from bot.f",
+         "value": ""
+      },
+      "ENV": {
+         "description": "Nope. Don't change",
+         "required": false,
+         "value": "ANYTHING"
+      }
+
    }
 }
+
