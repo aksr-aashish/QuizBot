@@ -1,17 +1,13 @@
-# Quiz bot — Бот-опросник
+Quiz bot - Questionnaire bot
+Function: a game similar to a quiz (answer questions, get points for correct answers). It can also be used as a questionnaire, with the ability to save points.
 
-
-**_Функция:_** игра, похожая на викторину (отвечаем на вопросы, получаем баллы за правильные ответы). Также можно использовать в качестве опросника, с возможностью сохранения очков.
-
-## Схема работы
-
-1. Участники регистрируются под произвольным именем, используя команду `/start` Регистрироваться можно в любых группах, куда добавлен этот бот (нужны права админа).
-2. Администраторов регистрируем, прописав их идентификатор(ы) (user_id) в `constants.py`
-3. Админ с помощью спец. команды `/question` пишет вопрос для участников. После этого регистрация временно прекращается.
-4. Бот рассылает вопрос во все уникальные группы _(chat_id)_, где регистрировались участники. Т.е. если регистрировались в привате с ботом, вопрос туда и приходит. Вопрос автоматически закрепляется, админам не рассылается.
-5. Участники пишут ответы, ставя хэштег `#answer` в начале сообщения, от каждого принимается только один ответ.
-6. Сообщения с ответом пересылаются в личку администратору, где ему/ей предлагается оценить его в 0 или 1 или 2 балла, нажав соответствующую кнопку. Оцененные сообщения автоматически редактируются, в них указывается, сколько присвоено баллов.
-7. По команде `/round` (доступной только админам) бот пишет во все уникальные _chat_id_ ники участников в игре и кто сколько заработал баллов за раунд. Эти баллы добавляются к общему количеству очков участника за все время (каждый может посмотреть статистику по команде `/score`). Регистрация снова открывается.
-8. По команде админа `/reset` все данные удаляются (ники участников, очки и т. д.).
-
-#### Бот написан с использованием библиотеки python-telegram-bot, база данных - sqlite3
+Scheme of work
+Members can register under an arbitrary name using the /start command. You can register in any groups where this bot is added (admin rights are required).
+We register administrators by writing their identifier (s) (user_id) in constants.py
+Admin with the help of /question command writes a question to the participants. After that, registration is temporarily terminated.
+The bot sends a question to all unique groups (chat_id) where members have registered. Those. if you registered in private with a bot, the question comes there. The question is automatically pinned, it is not sent to admins.
+Participants write responses by putting the hashtag #answer at the beginning of the message, only one response is accepted from each.
+Messages with the answer are sent to the personal administrator, where he / she is invited to rate it at 0 or 1 or 2 points by clicking the appropriate button. Graded posts are automatically edited to indicate how many points have been awarded.
+On the /round command (available only to admins), the bot writes to all the unique chat_id nicknames of the participants in the game and who earned how many points per round. These scores are added to the participant's total all-time scores (everyone can see the statistics for the /score team). Registration is open again.
+On the admin command /reset, all data is deleted (participant nicknames, points, etc.).
+The bot is written using the python-telegram-bot library, the database is sqlite3
