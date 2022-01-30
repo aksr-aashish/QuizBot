@@ -1,27 +1,43 @@
 {
-    "name": "QuizBot",
-    "description": "Quiz.",
-    "logo": "",
-    "keywords": [
-        "telegram",
-        "telethon",
-        "telegram-bot",
-        "VexanaFanClub"
-    ],
-    "repository": "https://github.com/aksr-aashish/QuizBot"
-   } "env": {
-        "API_TOKEN": {
-            "description": "Bot token, get it from @BotFather.",
-            "value": ""
-        },
-        "ADMIN_ID": {
-            "description": "Id of admin .",
-            "value": ""
-        },
+      "name": "Vexana Robot",
+      "description": "A Powerful  Telegram group management bot with anime theme.",
+      "keywords": [
+         "telegram",
+         "advance",
+         "group",
+         "manager",
+         "Vexanarobot"
+      ],
+    
+   "logo":    "https://telegra.ph/file/4a7d5037bcdd1e74a517a.jpg",
+   "repository": "https://github.com/aksr-aashish/QuizBot",
+   "addons": [
+          {
+         "options": {
+            "version": "12"
+         },
+         "plan": "heroku-postgresql"
+      }
+   ],
+   "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
     },
-    "buildpacks": [
-        {
-            "url": "heroku/python"
-        }
-    ]
-
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    }
+  ],  
+   "env": {
+      "API_TOKEN": {
+         "description": "Your bot token. Get one from @BotFather duh",
+         "required": true,
+         "value": ""
+      },
+      "ADMIN_ID": {
+         "description": "Get API_ID from my.telegram.org, used for telethon based modules.",
+         "required": true,
+         "value": ""
+      },
+      
+   }
+}
