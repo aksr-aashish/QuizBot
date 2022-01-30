@@ -1,0 +1,29 @@
+{
+    "name": "QuizBot",
+    "description": "Quiz.",
+    "logo": "",
+    "keywords": [
+        "telegram",
+        "telethon",
+        "telegram-bot",
+        "VexanaFanClub"
+    ],
+    "repository": "https://github.com/aksr-aashish/QuizBot",
+    "website": "VexanaFanClub.me",
+    "success_url": "https://t.me/itz_axel",
+    "env": {
+        "API_TOKEN": {
+            "description": "Bot token, get it from @BotFather.",
+            "value": ""
+        },
+        "ADMIN_ID": {
+            "description": "Id of admin .",
+            "value": ""
+        },
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ]
+}
