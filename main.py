@@ -5,13 +5,13 @@ import constants as keys
 import re
 import logging
 
-from telethon import (
+from telegram import (
     Bot,
     InlineKeyboardButton,
     InlineKeyboardMarkup
 )
 
-from telethon.ext import (
+from telegram.ext import (
     Updater, 
     CommandHandler, 
     MessageHandler,
@@ -21,7 +21,7 @@ from telethon.ext import (
 )
 
 # To know exactly if the bot has connected to Telegram or not
-from telethon.utils.request import Request
+from telegram.utils.request import Request
 
 from db import (
     init_db,
@@ -274,6 +274,7 @@ def main():
     updater.start_polling()
     updater.idle()
     logger.info('Bot has been stopped')
+    print("""Hello There Bot started Successfully Credit == @Axel_opp powered by @VexanaFanClub""")
 
 if __name__ == "__main__":
     main()
