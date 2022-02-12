@@ -6,7 +6,6 @@ import re
 import logging
 
 from telegram import (
-    Bot,
     InlineKeyboardButton,
     InlineKeyboardMarkup
 )
